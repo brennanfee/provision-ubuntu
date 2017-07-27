@@ -1,0 +1,107 @@
+{
+    "builders": [
+    {
+        "type": "virtualbox-iso",
+        "guest_os_type": "Ubuntu_64",
+        "iso_url": "../iso/ubuntu/ubuntu-16.04.1-server-amd64.iso",
+        "iso_checksum": "de5ee8665048f009577763efbf4a6f0558833e59",
+        "iso_checksum_type": "sha1",
+
+        "headless": true,
+
+        "http_directory": "http",
+
+        "ssh_username": "vagrant",
+        "ssh_password": "vagrant",
+
+        "ssh_wait_timeout": "45m",
+        "boot_wait": "10s",
+
+        "shutdown_command": "echo 'vagrant' | sudo systemctl poweroff",
+
+        "hard_drive_interface": "sata",
+        "format": "ovf",
+        "disk_size": "81920",
+        "guest_additions_mode": "disable",
+
+        "vboxmanage": [
+            ["modifyvm", "{{.Name}}", "--memory", "4096"],
+            ["modifyvm", "{{.Name}}", "--cpus", "2"],
+            ["modifyvm", "{{.Name}}", "--vram", "128"],
+            ["modifyvm", "{{.Name}}", "--accelerate3d", "on"],
+            ["modifyvm", "{{.Name}}", "--clipboard", "bidirectional"],
+            ["modifyvm", "{{.Name}}", "--draganddrop", "bidirectional"],
+            ["modifyvm", "{{.Name}}", "--rtcuseutc", "on"],
+            ["modifyvm", "{{.Name}}", "--mouse", "usb"],
+            ["modifyvm", "{{.Name}}", "--keyboard", "usb"],
+            ["modifyvm", "{{.Name}}", "--audio", "coreaudio"],
+            ["modifyvm", "{{.Name}}", "--audiocontroller", "hda"],
+            ["modifyvm", "{{.Name}}", "--usbehci", "on"]
+        ],
+
+        "boot_command": [
+            "<enter><wait>",
+            "<f6><esc>",
+            "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+            "<bs><bs><bs>",
+            "/install/vmlinuz ",
+            "initrd=/install/initrd.gz ",
+            "auto-install/enable=true ",
+            "debconf/priority=critical ",
+            "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu-16.04/preseed.cfg ",
+            "<enter>"
+        ]
+    }],
+    "provisioners": [
+    {
+        "type": "shell",
+        "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+        "scripts": [
+            "scripts/common/vagrant.sh"
+        ]
+    },
+    {
+        "type": "shell",
+        "inline": [
+            "curl -fsSL https://bit.ly/29fr6OQ | sudo -E /bin/bash",
+            "sudo reboot && sleep 60"
+        ]
+    },
+    {
+        "type": "ansible",
+        "pause_before": "30s",
+        "playbook_file": "../../ubuntu/main.yml",
+        "user": "vagrant",
+        "groups": [ "desktop_workstations" ],
+        "extra_arguments": [ "--extra-vars", "desktop_type=i3"]
+    },
+    {
+        "type": "shell",
+        "execute_command": "{{.Vars}} sudo -E bash '{{.Path}}'",
+        "scripts": [
+            "scripts/apt/vboxguest-gui.sh",
+            "scripts/common/do_reboot.sh"
+        ]
+    },
+    {
+        "type": "shell",
+        "pause_before": "60s",
+        "execute_command": "{{.Vars}} sudo -E bash '{{.Path}}'",
+        "scripts": [
+            "scripts/apt/cleanup.sh",
+            "scripts/common/minimize.sh"
+        ]
+    }],
+    "post-processors": [
+    {
+        "output": "../boxes/bfee-ubuntu-i3.box",
+        "type": "vagrant"
+    }]
+}

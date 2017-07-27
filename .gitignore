@@ -147,5 +147,6 @@ keys/
 
 # ISO files for packer installation
 packer/iso/
+packer/boxes/
 output-virtualbox-iso/
 
