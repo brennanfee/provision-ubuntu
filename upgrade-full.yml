@@ -1,0 +1,6 @@
+---
+- name: Install Updates
+  hosts: all
+  gather_facts: false
+  roles:
+    - { role: upgrade, apt_upgrade_level: full }

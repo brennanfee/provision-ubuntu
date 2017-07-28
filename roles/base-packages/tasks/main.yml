@@ -1,0 +1,54 @@
+---
+# This file should largely replicate what should have happend as part of the
+# base OS install - default tasks that were selected and base packages.
+# Generally, a pressed file should be used for installation.
+# Preseed apt packages: sudo acl build-essential dkms vim-nox curl git aptitude python python3 plymouth-themes plymouth-label
+- name: Install base tasks
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - ubuntu-server
+    - ubuntu-standard
+    - openssh-server
+
+- name: Install laptop packages
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - acpi
+    - avahi-autoipd
+    - bluetooth
+    - powertop
+    - iw
+    - wireless-tools
+    - wpasupplicant
+
+- name: Install base packages
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - sudo
+    - acl
+    - build-essential
+    - dkms
+    - vim-nox
+    - curl
+    - git
+    - aptitude
+    - python
+    - python3
+    - plymouth-themes
+    - plymouth-label
+
+- name: Allow users in the sudo group to run sudo (with a password)
+  become: true
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^\%sudo'
+    line: '%sudo  ALL=(ALL:ALL) ALL'
+    validate: 'visudo -cf %s'
+    backup: yes

@@ -1,0 +1,18 @@
+---
+# The intent of the bootstrap script is to run it first thing on a machine.
+# Given the chicken-and-egg situation with SSH a separate script is provided
+# to be run on brand new machines that will provision the Ansible user.
+# Once the Ansible user is provisioned this script should be run before any
+# other Ansible provisioning.
+- name: First-time setup
+  hosts: all
+  roles:
+    - { role: upgrade, apt_upgrade_level: full }
+    - base-packages
+    - python-install
+    - ansible-user
+    - ssh
+# NOTE: Most of these roles can (and should) be reused in a more complete
+# provision script.  However, the SSH role is touchy.  Some edits in that role
+# could accidentally lock you out of a machine so it is recommended to omit
+# that one role from any further Ansible playbooks.

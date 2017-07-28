@@ -1,0 +1,39 @@
+# Inventory: Home (Ubuntu)
+
+##########
+#  Each machine should be named in at least one of the role groups below.
+#  Every machine should declare a "desktop_type" variable to indicate
+#  which X desktop environment should be used.  Options are:
+#      kde (the default)
+#      mate
+##########
+
+### Machine role
+
+[media_workstations]
+shakespeare desktop_type=mate
+mozart desktop_type=mate
+bach desktop_type=mate
+
+[desktop_workstations]
+bacon desktop_type=mate
+plato desktop_type=mate
+aristotle desktop_type=mate
+socrates desktop_type=mate
+
+[dev_workstations]
+bacon desktop_type=mate
+plato desktop_type=mate
+
+[gaming_workstations]
+bacon desktop_type=mate
+plato desktop_type=mate
+
+[media_servers]
+aristotle desktop_type=mate
+
+[vm_servers]
+turing desktop_type=i3
+
+[router]
+columbus desktop_type=i3

@@ -70,7 +70,7 @@
         "type": "shell",
         "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
         "scripts": [
-            "scripts/common/vagrant.sh"
+            "scripts/vagrant.sh"
         ]
     },
     {
@@ -83,15 +83,15 @@
     {
         "type": "ansible",
         "pause_before": "30s",
-        "playbook_file": "../../ubuntu/bootstrap.yml",
+        "playbook_file": "../bootstrap.yml",
         "user": "vagrant"
     },
     {
         "type": "shell",
         "execute_command": "{{.Vars}} sudo -E bash '{{.Path}}'",
         "scripts": [
-            "scripts/apt/vboxguest-console.sh",
-            "scripts/common/do_reboot.sh"
+            "scripts/vboxguest-console.sh",
+            "scripts/do_reboot.sh"
         ]
     },
     {
@@ -99,13 +99,13 @@
         "pause_before": "30s",
         "execute_command": "{{.Vars}} sudo -E bash '{{.Path}}'",
         "scripts": [
-            "scripts/apt/cleanup.sh",
-            "scripts/common/minimize.sh"
+            "scripts/cleanup.sh",
+            "scripts/minimize.sh"
         ]
     }],
     "post-processors": [
     {
-        "output": "../boxes/bfee-ubuntu-{{user `ubuntu_version`}}-base.box",
+        "output": "boxes/bfee-ubuntu-{{user `ubuntu_version`}}-base.box",
         "type": "vagrant"
     }]
 }

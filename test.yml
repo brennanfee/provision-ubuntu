@@ -1,0 +1,6 @@
+---
+- name: Test script
+  hosts: all
+  roles:
+    - { role: upgrade, apt_upgrade_level: full }
+    - base-packages

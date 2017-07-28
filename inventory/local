@@ -1,0 +1,26 @@
+# Inventory: Local
+
+##########
+#  Each machine should be named in at least one of the role groups below.
+#  Every machine should declare a "desktop_type" variable to indicate
+#  which X desktop environment should be used.  Options are:
+#      kde (the default)
+#      mate
+##########
+
+### Machine role
+
+[media_workstations]
+
+[desktop_workstations]
+localhost ansible_connection=local desktop_type=kde
+
+[dev_workstations]
+
+[gaming_workstations]
+
+[media_servers]
+
+[vm_servers]
+
+[router]
