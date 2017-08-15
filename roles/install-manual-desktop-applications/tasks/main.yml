@@ -1,0 +1,8 @@
+---
+- include: geeknote.yml
+- include: jetbrains-toolbox.yml
+- include: packer.yml
+- include: pia.yml
+- include: terraform.yml
+#- include: todoist.yml  # Disabled for now, not really using
+- include: vault.yml

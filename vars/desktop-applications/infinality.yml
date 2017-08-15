@@ -1,0 +1,5 @@
+---
+ppa_repositories:
+  - "ppa:no1wantdthisname/ppa"
+apt_packages:
+  - fontconfig-infinality

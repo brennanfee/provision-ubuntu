@@ -1,0 +1,26 @@
+---
+# NOTE: This desktop can not be installed on it's own.  It must be installed
+# along side another desktop (either mate or kde).
+- name: Install i3 Repository
+  become: true
+  apt_repository:
+    repo: "deb http://debian.sur5r.net/i3/ {{ ansible_lsb.codename }} universe"
+    mode: 0644
+    update_cache: yes
+  register: repo_installed
+
+- name: Install i3 Key
+  become: true
+  raw: "apt-get --allow-unauthenticated install sur5r-keyring && apt-get update"
+  when: repo_installed.changed
+
+- name: Install i3wm
+  become: true
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - i3
+    - i3blocks
+    - zenity
+    - feh

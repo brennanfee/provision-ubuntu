@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+#
+
+# The WAN wired interface
+auto enp2s0
+allow-hotplug enp2s0
+iface enp2s0 inet dhcp
+
+# The LAN wired interface
+auto enp3s0
+allow-hotplug enp3s0
+iface enp3s0 inet static
+    address 192.168.1.1
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+    dns-domain tts.lan
+    dns-nameservers 192.168.1.1

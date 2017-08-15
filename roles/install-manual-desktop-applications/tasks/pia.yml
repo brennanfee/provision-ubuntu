@@ -1,0 +1,25 @@
+---
+- name: Download the PIA installer
+  become: true
+  unarchive:
+    src: "https://installers.privateinternetaccess.com/download/pia-{{ pia_version }}-installer-linux.tar.gz"
+    dest: /usr/local/src/
+    creates: /usr/local/src/pia-{{ pia_version }}-installer-linux.sh
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0644
+  register: pia_downloaded
+
+## At present don't run it as it needs to be run in the users account, instead
+## just create a non-versioned installer in /usr/local/bin
+- name: Link PIA
+  become: true
+  file:
+    src: /usr/local/src/pia-{{ pia_version }}-installer-linux.sh
+    path: /usr/local/bin/pia-installer.sh
+    state: link
+    owner: root
+    group: root
+    mode: 0755
+  when: pia_downloaded.changed == True

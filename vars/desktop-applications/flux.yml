@@ -1,0 +1,5 @@
+---
+ppa_repositories:
+  - "ppa:nathan-renniewaldock/flux"
+apt_packages:
+  - fluxgui

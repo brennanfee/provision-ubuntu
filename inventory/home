@@ -2,38 +2,25 @@
 
 ##########
 #  Each machine should be named in at least one of the role groups below.
-#  Every machine should declare a "desktop_type" variable to indicate
-#  which X desktop environment should be used.  Options are:
-#      kde (the default)
-#      mate
+#  At present the only desktop installed is KDE.  In the past (and perhaps
+#  again in the future) I supported other desktops but KDE is my DE of choice
+#  these days.
 ##########
 
 ### Machine role
-
-[media_workstations]
-shakespeare desktop_type=mate
-mozart desktop_type=mate
-bach desktop_type=mate
+[laptop_workstations]
+socrates
 
 [desktop_workstations]
-bacon desktop_type=mate
-plato desktop_type=mate
-aristotle desktop_type=mate
-socrates desktop_type=mate
-
-[dev_workstations]
-bacon desktop_type=mate
-plato desktop_type=mate
+bacon
+turing
+tesla
+kant
+hume
 
 [gaming_workstations]
-bacon desktop_type=mate
-plato desktop_type=mate
+bacon
+socrates
 
 [media_servers]
-aristotle desktop_type=mate
-
-[vm_servers]
-turing desktop_type=i3
-
-[router]
-columbus desktop_type=i3
+aristotle

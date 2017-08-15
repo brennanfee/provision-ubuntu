@@ -1,0 +1,110 @@
+---
+ppa_repositories:
+    - "ppa:martin-frost/thoughtbot-rcm"
+apt_repositories:
+    - { repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main", filename: "google-chrome" }
+    - { repo: "deb http://www.scootersoftware.com/ bcompare4 non-free", filename: "scootersoftware" }
+apt_keys:
+    - { url: "https://dl-ssl.google.com/linux/linux_signing_key.pub", id: "D38B4796" }
+    - { url: "http://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware", id: "7F8840CE" }
+apt_packages:
+# Hardware tools
+    - intel-microcode
+    - amd64-microcode
+    - hwdata
+    - lsb-release
+# Disk & Filesystem Tools
+    - attr
+    - eject
+    - ntfs-3g
+    - dosfstools
+    - gdisk
+    - parted
+    - btrfs-tools
+    - exfat-utils
+    - xfsprogs
+    - cryptsetup
+    - mhddfs
+    - gvfs-bin
+    - cifs-utils
+# Apt tools
+    - apt-transport-https
+    - ca-certificates
+    - unattended-upgrades
+    - apt-listchanges
+    - gdebi-core
+# Monitoring & Networking Tools
+    - htop
+    - iotop
+    - cpuid
+    - cpustat
+    - nmap
+    - smbclient
+    - sshfs
+# Git & Subversion
+    - git
+    - git-doc
+    - git-flow
+    - git-extras
+    - subversion
+    - subversion-tools
+    - git-svn
+    - git-gui
+    - gitk
+# Install Zsh
+    - zsh
+    - zsh-doc
+    - zsh-syntax-highlighting
+    - zsh-antigen
+# RCM (from PPA)
+    - rcm
+# Common applications
+    - moreutils
+    - command-not-found
+    - most
+    - vifm
+    - ranger
+    - tmux
+    - curl
+    - wget
+    - rsync
+    - atool
+    - unrar
+    - silversearcher-ag
+    - jq
+    - tree
+    - screenfetch
+    - scrot
+    - xscreensaver
+    - xscreensaver-data-extra
+    - xscreensaver-gl-extra
+# Editors
+    - emacs24
+    - emacs24-el
+    - emacs24-common-non-dfsg
+    - emacs-goodies-el
+    - vim-gtk3
+    - exuberant-ctags
+# Goolge Chrome
+    - google-chrome-stable
+# Beyond Compare
+    - bcompare
+# X11 apps
+    - firefox
+    - firefox-locale-en
+    - rxvt-unicode-256color
+    - gnome-icon-theme-extras
+    - gdebi
+    - gparted
+    - libsqlite3-0
+    - feh
+    - systemd-ui
+    - blueman
+    - system-config-lvm
+    - meld
+
+deb_packages:
+    # Visual Studio Code
+    - "http://go.microsoft.com/fwlink/?LinkID=760868"
+    # Atom
+    - "https://github.com/atom/atom/releases/download/v1.18.0/atom-amd64.deb"

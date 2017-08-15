@@ -1,0 +1,20 @@
+---
+## NOTE: This is currently not being used, there is no installable option
+## for 17.04 and it still seems way too early for dotnetcore on linux.
+- name: Setup dotnet core repo key
+  become: true
+  apt_key:
+    keyserver: "hkp://keyserver.ubuntu.com:80"
+    id: "417A0893"
+
+- name: Setup dotnet core repo
+  apt_repository:
+    repo: "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ {{ ansible_lsb.codename }} main"
+    filename: "dotnetdev"
+    mode: 0644
+    update_cache: yes
+
+- name: Install dotnet core
+  become: true
+  apt:
+    name: "dotnet-dev-1.0.4"

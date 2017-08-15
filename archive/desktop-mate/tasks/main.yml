@@ -1,0 +1,33 @@
+---
+- name: Install Mate PPAs
+  become: true
+  apt_repository:
+    repo: "{{ item }}"
+    mode: 0644
+    update_cache: yes
+  with_items:
+    - "ppa:ubuntu-mate-dev/welcome"
+
+- name: Install Mate desktop
+  become: true
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - ubuntu-mate-core
+    - ubuntu-mate-welcome
+    - ubuntu-mate-wallpapers-complete
+    - lightdm-gtk-greeter-settings
+    - plank
+# Extensions for Caja
+    - caja-dropbox
+    - caja-actions
+    - caja-actions-dev
+    - caja-image-converter
+    - caja-open-terminal
+    - caja-share
+# Gnome specific tools (here so we don't get them on KDE boxes)
+    - gnome-keyring
+    - libpam-gnome-keyring
+    - gnome-disk-utility
+    - gnome-system-monitor

@@ -1,0 +1,7 @@
+---
+- name: Enable wireless services
+  become: true
+  service:
+    name: wpa_supplicant
+    enabled: yes
+    state: started

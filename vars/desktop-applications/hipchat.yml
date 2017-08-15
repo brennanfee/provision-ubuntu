@@ -1,0 +1,8 @@
+---
+# Hipchat
+apt_repositories:
+    - { repo: "deb https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client {{ ansible_lsb.codename }} main", filename: "hipchat" }
+apt_keys:
+    - { url: "https://atlassian.artifactoryonline.com/atlassian/api/gpg/key/public", id: "CC64091D" }
+apt_packages:
+    - hipchat

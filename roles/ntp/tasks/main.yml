@@ -1,0 +1,28 @@
+---
+- name: Install ntp and tools
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - ntp
+    - ntp-doc
+    - ntpdate
+    - ntpstat
+
+- name: Ensure the service is running
+  become: true
+  service:
+    name: ntp
+    enabled: yes
+    state: started
+
+- name: Copy ntp configuration
+  become: true
+  template:
+    src: etc--ntp.conf.j2
+    dest: /etc/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: Restart ntp

@@ -1,0 +1,5 @@
+---
+ppa_repositories:
+    - "ppa:flexiondotorg/youtube-dl-gui"
+apt_packages:
+    - youtube-dlg

@@ -33,6 +33,7 @@ apt-get -y install sudo acl build-essential dkms vim-nox curl git aptitude pytho
 # Upgrading packages
 echo "Upgrading packages"
 apt-get -y dist-upgrade
+apt-get -y autoremove
 
 # Create the Ansible user
 echo "Adding Ansible user"

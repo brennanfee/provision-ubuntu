@@ -1,0 +1,62 @@
+---
+- include: python.yml
+
+- include: ruby.yml
+
+- include: rust.yml
+
+- name: Install node
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - nodejs
+    - npm
+
+- name: Install go
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - golang
+    - golang-go
+
+- name: Install php
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - php-all-dev
+    - php
+    - php-cli
+
+- name: Install lua
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - lua5.2
+    - lua5.3
+
+- name: Install Java
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - default-jdk
+#    - openjdk-9-jdk
+#    - openjdk-9-demo
+#    - openjdk-9-source
+    - ant
+    - maven
+    - ivy
+
+- name: Install Tcl/Tk
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - tcl
+    - tcl-dev
+    - tk
+    - tk-dev

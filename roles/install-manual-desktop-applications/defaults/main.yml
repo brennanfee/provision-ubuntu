@@ -1,0 +1,8 @@
+---
+packer_version: 1.0.3
+terraform_version: 0.9.11
+vault_version: 0.7.3
+
+jetbrains_toolbox_version: 1.4.2492
+
+pia_version: v72

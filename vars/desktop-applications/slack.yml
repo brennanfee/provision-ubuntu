@@ -1,0 +1,8 @@
+---
+# Slack
+apt_repositories:
+    - { repo: "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main", filename: "slack" }
+apt_keys:
+    - { url: "https://packagecloud.io/slacktechnologies/slack/gpgkey", id: "038651BD" }
+apt_packages:
+    - slack-desktop

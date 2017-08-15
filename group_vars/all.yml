@@ -1,13 +1,15 @@
 ---
+apt_include_backports: true
+apt_include_partners: true
+apt_include_source: true
 apt_upgrade_level: safe
-
-desktop_type: kde
 
 audio_sample_channels: 2
 
-time_zone: America/Chicago
+desired_time_zone: US/Central
 
 default_groups:
+  - audio
   - cdrom
   - floppy
   - dip

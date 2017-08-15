@@ -1,0 +1,23 @@
+---
+apt_repositories:
+    - { repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable", filename: "docker" }
+apt_keys:
+    - { url: "https://download.docker.com/linux/ubuntu/gpg", id: "0EBFCD88" }
+apt_packages:
+# LXC and virt
+    - lxd
+    - lxd-tools
+    - virt-manager
+    - virt-viewer
+    - virt-top
+    - virt-goodies
+# Virtualbox
+    - virtualbox
+    - virtualbox-ext-pack
+    - virtualbox-guest-additions-iso
+    - virtualbox-qt
+# Vagrant
+    - vagrant
+    - vagrant-lxc
+# Docker
+    - docker-ce

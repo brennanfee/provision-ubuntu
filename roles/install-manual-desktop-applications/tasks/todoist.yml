@@ -1,0 +1,33 @@
+---
+# TODO: Test and change download locations to /usr/local/src instead.
+- name: Create Todoist folder
+  become: true
+  file:
+    path: /usr/local/bin/todoist-gui/
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Download Todoist GUI
+  become: true
+  unarchive:
+    src: "https://s3.amazonaws.com/kamhix/downloads/todoist-linux-64bits.tar.gz"
+    dest: /usr/local/bin/todoist-gui/
+    creates: /usr/local/bin/todoist-gui/64/Todoist
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0755
+  register: todoist_installed
+
+- name: Create symlink for Todoist
+  become: true
+  file:
+    dest: /usr/local/bin/todoist
+    src: /usr/local/bin/todoist-gui/64/Todoist
+    owner: root
+    group: root
+    mode: 0644
+    state: link
+  when: todoist_installed.changed

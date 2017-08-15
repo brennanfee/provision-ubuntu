@@ -61,6 +61,7 @@
     mode: 0644
   when: host_keys.stat.exists == False
 
+# TODO: Verify if these are coming back or not... if so, just remove this.
 - name: Remove outdated host keys
   become: true
   file:

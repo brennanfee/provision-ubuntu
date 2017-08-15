@@ -1,0 +1,15 @@
+---
+- name: Install printer packages
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - foomatic-db-engine
+    - hp-ppd
+    - hplip
+    - hplip-doc
+    - openprinting-ppds
+    - cups-bsd
+    - psutils
+    - printer-driver-all
+    - printer-driver-cups-pdf

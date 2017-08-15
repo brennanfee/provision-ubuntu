@@ -1,0 +1,133 @@
+---
+# Fonts from APT
+font_packages:
+# base fonts
+    - fonts-font-awesome
+    - fonts-materialdesignicons-webfont
+    - fonts-noto
+# extra fonts
+    - fonts-liberation
+    - fonts-dejavu
+    - ttf-anonymous-pro
+    - fonts-roboto
+    - fonts-octicons
+    - fonts-freefont-otf
+    - fonts-cantarell
+    - fonts-humor-sans
+    - fonts-kristi
+    - fonts-lindenhill
+    - fonts-linuxlibertine
+    - fonts-lyx
+    - fonts-oxygen
+    - fonts-powerline
+    - fonts-stix
+    - fonts-vollkorn
+
+# Font files to download and install
+url_fonts:
+### Google fonts
+# Passion One
+    - { file: "PassionOne-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/passionone/PassionOne-Regular.ttf" }
+    - { file: "PassionOne-Black.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/passionone/PassionOne-Black.ttf" }
+    - { file: "PassionOne-Bold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/passionone/PassionOne-Bold.ttf" }
+# Cinzel Decorative
+    - { file: "CinzelDecorative-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/cinzeldecorative/CinzelDecorative-Regular.ttf" }
+    - { file: "CinzelDecorative-Bold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/cinzeldecorative/CinzelDecorative-Bold.ttf" }
+    - { file: "CinzelDecorative-Black.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/cinzeldecorative/CinzelDecorative-Black.ttf" }
+# Bangers
+    - { file: "Bangers-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/bangers/Bangers-Regular.ttf" }
+# Pacifico
+    - { file: "Pacifico-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/pacifico/Pacifico-Regular.ttf" }
+# Courgette
+    - { file: "Courgette-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/courgette/Courgette-Regular.ttf" }
+# Fira Sans
+    - { file: "FiraSans-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-Regular.ttf" }
+    - { file: "FiraSans-Black.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-Black.ttf" }
+    - { file: "FiraSans-BlackItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-BlackItalic.ttf" }
+    - { file: "FiraSans-Bold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-Bold.ttf" }
+    - { file: "FiraSans-BoldItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-BoldItalic.ttf" }
+    - { file: "FiraSans-ExtraBold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-ExtraBold.ttf" }
+    - { file: "FiraSans-ExtraBoldItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-ExtraBoldItalic.ttf" }
+    - { file: "FiraSans-ExtraLight.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-ExtraLight.ttf" }
+    - { file: "FiraSans-ExtraLightItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-ExtraLightItalic.ttf" }
+    - { file: "FiraSans-Italic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-Italic.ttf" }
+    - { file: "FiraSans-Light.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-Light.ttf" }
+    - { file: "FiraSans-LightItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-LightItalic.ttf" }
+    - { file: "FiraSans-Medium.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-Medium.ttf" }
+    - { file: "FiraSans-MediumItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-MediumItalic.ttf" }
+    - { file: "FiraSans-SemiBold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-SemiBold.ttf" }
+    - { file: "FiraSans-SemiBoldItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-SemiBoldItalic.ttf" }
+    - { file: "FiraSans-Thin.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-Thin.ttf" }
+    - { file: "FiraSans-ThinItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/firasans/FiraSans-ThinItalic.ttf" }
+# Crimson Text
+    - { file: "CrimsonText-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/crimsontext/CrimsonText-Regular.ttf" }
+    - { file: "CrimsonText-Bold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/crimsontext/CrimsonText-Bold.ttf" }
+    - { file: "CrimsonText-BoldItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/crimsontext/CrimsonText-BoldItalic.ttf" }
+    - { file: "CrimsonText-Italic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/crimsontext/CrimsonText-Italic.ttf" }
+    - { file: "CrimsonText-SemiBold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/crimsontext/CrimsonText-SemiBold.ttf" }
+    - { file: "CrimsonText-SemiBoldItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/crimsontext/CrimsonText-SemiBoldItalic.ttf" }
+# Merriweather
+    - { file: "Merriweather-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweather/Merriweather-Regular.ttf" }
+    - { file: "Merriweather-Black.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweather/Merriweather-Black.ttf" }
+    - { file: "Merriweather-BlackItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweather/Merriweather-BlackItalic.ttf" }
+    - { file: "Merriweather-Bold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweather/Merriweather-Bold.ttf" }
+    - { file: "Merriweather-BoldItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweather/Merriweather-BoldItalic.ttf" }
+    - { file: "Merriweather-Italic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweather/Merriweather-Italic.ttf" }
+    - { file: "Merriweather-Light.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweather/Merriweather-Light.ttf" }
+    - { file: "Merriweather-LightItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweather/Merriweather-LightItalic.ttf" }
+# Merriweather Sans
+    - { file: "MerriweatherSans-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweathersans/MerriweatherSans-Regular.ttf" }
+    - { file: "MerriweatherSans-Bold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweathersans/MerriweatherSans-Bold.ttf" }
+    - { file: "MerriweatherSans-BoldItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweathersans/MerriweatherSans-BoldItalic.ttf" }
+    - { file: "MerriweatherSans-ExtraBold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweathersans/MerriweatherSans-ExtraBold.ttf" }
+    - { file: "MerriweatherSans-ExtraBoldItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweathersans/MerriweatherSans-ExtraBoldItalic.ttf" }
+    - { file: "MerriweatherSans-Italic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweathersans/MerriweatherSans-Italic.ttf" }
+    - { file: "MerriweatherSans-Light.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweathersans/MerriweatherSans-Light.ttf" }
+    - { file: "MerriweatherSans-LightItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/merriweathersans/MerriweatherSans-LightItalic.ttf" }
+# Noto Emoji
+    - { file: "NotoEmoji-Regular.ttf", url: "https://raw.githubusercontent.com/googlei18n/noto-emoji/master/fonts/NotoEmoji-Regular.ttf" }
+    - { file: "NotoColorEmoji.ttf", url: "https://raw.githubusercontent.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf" }
+# Droid Sans Mono
+    - { file: "DroidSansMono-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/droidsansmono/DroidSansMono-Regular.ttf" }
+# Droid Sans
+    - { file: "DroidSans-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/droidsans/DroidSans-Regular.ttf" }
+    - { file: "DroidSans-Bold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/droidsans/DroidSans-Bold.ttf" }
+# Droid Serif
+    - { file: "DroidSerif-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/droidserif/DroidSerif-Regular.ttf" }
+    - { file: "DroidSerif-Bold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/droidserif/DroidSerif-Bold.ttf" }
+    - { file: "DroidSerif-BoldItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/droidserif/DroidSerif-BoldItalic.ttf" }
+    - { file: "DroidSerif-Italic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/droidserif/DroidSerif-Italic.ttf" }
+# Roboto Mono
+    - { file: "RobotoMono-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Regular.ttf" }
+    - { file: "RobotoMono-Bold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Bold.ttf" }
+    - { file: "RobotoMono-BoldItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-BoldItalic.ttf" }
+    - { file: "RobotoMono-Italic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Italic.ttf" }
+    - { file: "RobotoMono-Light.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Light.ttf" }
+    - { file: "RobotoMono-LightItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-LightItalic.ttf" }
+    - { file: "RobotoMono-Medium.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Medium.ttf" }
+    - { file: "RobotoMono-MediumItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-MediumItalic.ttf" }
+    - { file: "RobotoMono-Thin.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Thin.ttf" }
+    - { file: "RobotoMono-ThinItalic.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-ThinItalic.ttf" }
+# Roboto Slab
+    - { file: "RobotoSlab-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotoslab/RobotoSlab-Regular.ttf" }
+    - { file: "RobotoSlab-Bold.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotoslab/RobotoSlab-Bold.ttf" }
+    - { file: "RobotoSlab-Light.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotoslab/RobotoSlab-Light.ttf" }
+    - { file: "RobotoSlab-Thin.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/apache/robotoslab/RobotoSlab-Thin.ttf" }
+# Bungee
+    - { file: "Bungee-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/bungee/Bungee-Regular.ttf" }
+    - { file: "BungeeHairline-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/bungeehairline/BungeeHairline-Regular.ttf" }
+    - { file: "BungeeInline-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/bungeeinline/BungeeInline-Regular.ttf" }
+    - { file: "BungeeOutline-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/bungeeoutline/BungeeOutline-Regular.ttf" }
+    - { file: "BungeeShade-Regular.ttf", url: "https://raw.githubusercontent.com/google/fonts/master/ofl/bungeeshade/BungeeShade-Regular.ttf" }
+### Fonts NOT from google
+# Fira Code
+    - { file: "FiraCode-Regular.otf", url: "https://raw.githubusercontent.com/tonsky/firacode/master/distr/otf/FiraCode-Regular.otf" }
+    - { file: "FiraCode-Retina.otf", url: "https://raw.githubusercontent.com/tonsky/firacode/master/distr/otf/FiraCode-Retina.otf" }
+    - { file: "FiraCode-Medium.otf", url: "https://raw.githubusercontent.com/tonsky/firacode/master/distr/otf/FiraCode-Medium.otf" }
+    - { file: "FiraCode-Light.otf", url: "https://raw.githubusercontent.com/tonsky/firacode/master/distr/otf/FiraCode-Light.otf" }
+    - { file: "FiraCode-Bold.otf", url: "https://raw.githubusercontent.com/tonsky/firacode/master/distr/otf/FiraCode-Bold.otf" }
+# Hack
+    - { file: "Hack-Regular.otf", url: "https://raw.githubusercontent.com/chrissimpkins/hack/master/build/otf/Hack-Regular.otf" }
+    - { file: "Hack-Bold.otf", url: "https://raw.githubusercontent.com/chrissimpkins/hack/master/build/otf/Hack-Bold.otf" }
+    - { file: "Hack-BoldItalic.otf", url: "https://raw.githubusercontent.com/chrissimpkins/hack/master/build/otf/Hack-BoldItalic.otf" }
+    - { file: "Hack-Italic.otf", url: "https://raw.githubusercontent.com/chrissimpkins/hack/master/build/otf/Hack-Italic.otf" }

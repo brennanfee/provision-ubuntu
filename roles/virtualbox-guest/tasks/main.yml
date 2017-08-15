@@ -1,0 +1,51 @@
+---
+- name: Install VirtualBox pre-reqs
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - build-essential
+    - dkms
+
+- name: Install VirtualBox guest additions
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - virtualbox-guest-utils
+    - virtualbox-guest-dkms
+    - virtualbox-guest-x11
+
+- name: Check if Vagrant user exists
+  shell: /usr/bin/getent passwd vagrant | /usr/bin/wc -l | tr -d ''
+  register: vbox_vagrant_user_exists
+  changed_when: false
+
+- name: Add vagrant user to the VirtualBox group
+  become: true
+  user:
+    name: 'vagrant'
+    groups: 'vboxsf'
+    append: yes
+  when: vbox_vagrant_user_exists.stdout == "1"
+
+- name: Add users to the VirtualBox group
+  become: true
+  user:
+    name: '{{ item }}'
+    groups: 'vboxsf'
+    append: yes
+  with_items: '{{ virtualbox_managers }}'
+
+- name: Disable unattended upgrades
+  become: true
+  template:
+    src: etc-apt-apt.conf.d--99vm-overides.j2
+    dest: /etc/apt/apt.conf.d/99vm-overrides
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  register: apt_sources

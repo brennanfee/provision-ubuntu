@@ -1,0 +1,32 @@
+---
+# TODO: Wait until my PR is merged to NerdFonts
+- name: Pull latest from NerdFonts repository
+  become: true
+  git:
+    depth: 1
+    dest: "/usr/local/src/NerdFonts"
+    force: yes
+    repo: "https://github.com/ryanoasis/nerd-fonts.git"
+  register: nerd_fonts_repo
+
+- name: Install or Update NerdFonts
+  become: true
+  command: /usr/local/src/NerdFonts/install.sh -s -S '{{ item }}'
+  args:
+    chdir: "/usr/local/src/NerdFonts"
+  ignore_errors: yes
+  with_items:
+    - Hack
+    - Hasklig
+    - SourceCodePro
+    - UbuntuMono
+    - RobotoMono
+    - DroidSansMono
+    - DejaVuSansMono
+# TODO: Evaluate these font, might remove
+    - CodeNewRoman
+    - Iosevka
+  register: nerd_fonts_install
+  failed_when: "nerd_fonts_install.rc != 0 OR nerd_fonts_insall.rc != 1"
+  when: nerd_fonts_repo|changed
+  notify: Regenerate Font Cache

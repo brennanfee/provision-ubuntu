@@ -1,0 +1,5 @@
+---
+ppa_repositories:
+  - "ppa:nilarimogard/webupd8"
+apt_packages:
+  - albert

@@ -1,0 +1,33 @@
+---
+- name: Create Packer directory
+  become: true
+  file:
+    path: /usr/local/src/packer-{{ packer_version }}/
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install Packer
+  become: true
+  unarchive:
+    src: "https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_amd64.zip"
+    dest: /usr/local/src/packer-{{ packer_version }}/
+    creates: /usr/local/src/packer-{{ packer_version }}/packer
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0755
+  register: packer_download
+  when: ansible_virtualization_role != "guest"
+
+- name: Link Packer
+  become: true
+  file:
+    src: /usr/local/src/packer-{{ packer_version }}/packer
+    path: /usr/local/bin/packer
+    state: link
+    owner: root
+    group: root
+    mode: 0755
+  when: ansible_virtualization_role != "guest" and packer_download.changed == True

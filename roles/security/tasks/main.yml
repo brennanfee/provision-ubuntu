@@ -1,0 +1,28 @@
+---
+- name: Ensure no /etc/hosts.equiv file exists
+  become: true
+  file: path=/etc/hosts.equiv state=absent
+
+- name: Set root account to not allow interactive login
+  become: true
+  user:
+    name: 'root'
+    shell: '/usr/sbin/nologin'
+
+- name: Install some security tools
+  become: true
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - whois
+    - gnupg2
+    - gpgv2
+    - pinentry-curses
+    - pinentry-doc
+    - gnupg-agent
+    - rush
+    - rssh
+    - sshfs
+    - mosh
+    - molly-guard

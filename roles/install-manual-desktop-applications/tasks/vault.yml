@@ -1,0 +1,32 @@
+---
+- name: Create vault directory
+  become: true
+  file:
+    path: /usr/local/src/vault-{{ vault_version }}/
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install Vault
+  become: true
+  unarchive:
+    src: "https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_linux_amd64.zip"
+    dest: /usr/local/src/vault-{{ vault_version }}/
+    creates: /usr/local/src/vault-{{ vault_version }}/vault
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0755
+  register: vault_downloaded
+
+- name: Link Vault
+  become: true
+  file:
+    src: /usr/local/src/vault-{{ vault_version }}/vault
+    path: /usr/local/bin/vault
+    state: link
+    owner: root
+    group: root
+    mode: 0755
+  when: vault_downloaded.changed == True

@@ -1,6 +1,5 @@
 ---
 - name: Test script
   hosts: all
-  roles:
-    - { role: upgrade, apt_upgrade_level: full }
-    - base-packages
+  tasks:
+    - debug: "Time zone is: {{ time_zone }}"

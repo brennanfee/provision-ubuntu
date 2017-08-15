@@ -1,0 +1,8 @@
+---
+apt_repositories:
+    - { repo: "deb https://downloads.plex.tv/repo/deb ./public main", filename: "plexmediaserver" }
+apt_keys:
+# 3ADCA79D
+    - { url: "https://downloads.plex.tv/plex-keys/PlexSign.key", id: "19930ce0357f723e590210e3101321a3" }
+apt_packages:
+    - plexmediaserver

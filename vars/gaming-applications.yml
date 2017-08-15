@@ -1,0 +1,20 @@
+---
+ppa_repositories:
+  - "ppa:wfg/0ad"
+apt_packages:
+  - gnome-games
+  - gnuchess
+  - xboard
+  - crafty
+  - gnome-chess
+  - gameclock
+  - gnugo
+  - gnudoq
+  - supertux
+  - supertuxkart
+  - quake2
+  - quake3
+  - 0ad
+
+# NOTE: I don't install steam here.  I do that manually after the machine is set
+# up and drivers have been installed.

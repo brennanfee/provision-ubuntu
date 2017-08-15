@@ -1,0 +1,4 @@
+---
+- name: Regenerate Font Cache
+  become: true
+  command: fc-cache -f -v

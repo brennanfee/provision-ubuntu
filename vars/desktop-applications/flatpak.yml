@@ -1,0 +1,5 @@
+---
+ppa_repositories:
+  - "ppa:libreoffice/ppa"
+apt_packages:
+  - flatpak

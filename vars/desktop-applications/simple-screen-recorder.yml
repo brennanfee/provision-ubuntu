@@ -1,0 +1,5 @@
+---
+ppa_repositories:
+  - "ppa:maarten-baert/simplescreenrecorder"
+apt_packages:
+  - simplescreenrecorder

@@ -1,0 +1,68 @@
+---
+- name: Install system ruby
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - ruby-dev
+
+### ruby-install
+- name: Checking for ruby-install
+  stat:
+    path:  /usr/local/bin/ruby-install
+    get_checksum: false
+    get_md5: false
+  register: ruby_install_status
+
+- name: Download the ruby-install tarball
+  become: true
+  unarchive:
+    src: "https://github.com/postmodern/ruby-install/archive/v{{ ruby_install_version }}.tar.gz"
+    dest: "/tmp"
+    creates: "/tmp/ruby-install-{{ ruby_install_version }}/LICENSE.txt"
+    remote_src: yes
+  when: ruby_install_status.stat.exists == False
+
+- name: Install ruby-install
+  become: true
+  command: make install
+  args:
+    chdir: /tmp/ruby-install-{{ ruby_install_version }}
+    creates: /usr/local/bin/ruby-install
+  when: ruby_install_status.stat.exists == False
+
+### chruby
+- name: Checking for chruby
+  stat:
+    path:  /usr/local/bin/chruby-exec
+    get_checksum: false
+    get_md5: false
+  register: chruby_status
+
+- name: Download the chruby tarball
+  become: true
+  unarchive:
+    src: "https://github.com/postmodern/chruby/archive/v{{ chruby_version }}.tar.gz"
+    dest: "/tmp"
+    creates: "/tmp/chruby-{{ chruby_version }}/LICENSE.txt"
+    remote_src: yes
+  when: chruby_status.stat.exists == False
+
+- name: Install chruby
+  become: true
+  command: make install
+  args:
+    chdir: /tmp/chruby-{{ chruby_version }}
+    creates: /usr/local/bin/chruby-exec
+  when: chruby_status.stat.exists == False
+
+### Default profile
+- name: Copy chruby profile config
+  become: true
+  template:
+    src: etc-profile.d--chruby.sh
+    dest: /etc/profile.d/chruby.sh
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes

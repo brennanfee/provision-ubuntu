@@ -1,0 +1,23 @@
+---
+- name: Check if rust is already installed
+  stat:
+    path: "/usr/local/bin/rustc"
+    get_checksum: false
+    get_md5: false
+  register: rust_status
+
+- name: Download rustup.sh script
+  become: true
+  get_url:
+    url: "https://static.rust-lang.org/rustup.sh"
+    dest: "/tmp/rustup.sh"
+    owner: root
+    group: root
+    mode: 0644
+  when: rust_status.stat.exists == False
+
+- name: Run rustup.sh script
+  command: sh /tmp/rustup.sh
+  args:
+    creates: /usr/local/bin/rustc
+  when: rust_status.stat.exists == False

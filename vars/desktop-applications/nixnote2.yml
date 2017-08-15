@@ -1,0 +1,8 @@
+---
+# THis is the daily builds, in 17.04 and later the nixnote2 stable package is
+# part of the normal repos.  This file should be removed when the next LTS
+# is released and the package installed in base.yml
+ppa_repositories:
+  - "ppa:nixnote/nixnote2-daily"
+apt_packages:
+  - nixnote2

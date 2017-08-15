@@ -1,0 +1,5 @@
+---
+ppa_repositories:
+  - "ppa:webupd8team/y-ppa-manager"
+apt_packages:
+  - y-ppa-manager

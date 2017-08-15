@@ -1,0 +1,104 @@
+---
+- name: Core setup (bootstrap)
+  hosts: all
+  roles:
+    - { role: upgrade, apt_upgrade_level: full }
+    - base-packages
+    - allow-sudo
+    - ansible-user
+    - ssh  # Might remove this if it causes issues with edits and successive runs
+
+- name: Common setup for all machines
+  hosts: all
+  roles:
+    - users
+    - timezone
+    - apt-configuration
+    - ntp
+    - systemd
+    - network
+    - security
+    - audio
+    - install-dev-frameworks
+    - popularity-contest
+    - printer-install
+
+- name: X11 Desktop Setup
+  hosts: all
+  roles:
+    - { role: desktop-kde, when: desktop_type == "kde" }
+    - { role: desktop-mate, when: desktop_type == "mate" }
+    - { role: desktop-addon-i3, when: desktop_type == "mate" or desktop_type == "kde" }
+    - { role: virtualbox-guest, when: ansible_virtualization_type == "virtualbox" and ansible_virtualization_role == "guest" }
+
+- name: Install Fonts
+  hosts: all
+  vars_files:
+    - vars/fonts.yml
+  roles:
+    - install-nerdfonts
+    - install-fonts
+
+- name: Shared Applications
+  hosts: all
+  vars:
+    package_set: "Shared Applications"
+  vars_files:
+    - vars/shared-applications.yml
+  roles:
+    - install-applications
+
+- name: Desktop Workstation Applications
+  hosts: desktop_workstations:laptop_workstations:gaming_workstations
+  vars:
+    package_set: "Desktop Appliations"
+  vars_files:
+    - vars/desktop-applications/albert.yml
+    - vars/desktop-applications/base.yml
+    - vars/desktop-applications/dropbox.yml
+    - vars/desktop-applications/flatpak.yml
+    - vars/desktop-applications/flux.yml
+    - vars/desktop-applications/infinality.yml
+    - vars/desktop-applications/nixnote2.yml
+    - vars/desktop-applications/simple-screen-recorder.yml
+    - vars/desktop-applications/slack.yml
+    - vars/desktop-applications/spotify.yml
+    - vars/desktop-applications/y-ppa-manager.yml
+    - vars/desktop-applications/youtube-dl-gui.yml
+# Hipchat disabled for now, was only using at Expedia
+#    - vars/desktop-applications-hipchat.yml
+  roles:
+    - install-applications
+    - install-manual-desktop-applications
+
+- name: VM Applications
+  hosts: desktop_workstations:laptop_workstations:gaming_workstations
+  vars:
+    package_set: "VM Applications"
+  vars_files:
+    - vars/vm-applications.yml
+  roles:
+    - { role: install-applications, when: ansible_virtualization_role != "guest" }
+
+- name: Gaming Applications
+  hosts: gaming_workstation
+  vars:
+    package_set: "Game Applications"
+  vars_files:
+    - vars/gaming-applications.yml
+  roles:
+    - install-applications
+
+- name: Media Server Applications
+  hosts: media_servers
+  vars:
+    package_set: "Media Server Applications"
+  vars_files:
+    - vars/media-server-applications.yml
+  roles:
+    - install-applications
+
+- name: Configure update-alternatives
+  hosts: all
+  roles:
+    - configure-alternatives

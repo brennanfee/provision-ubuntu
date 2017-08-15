@@ -2,25 +2,17 @@
 
 ##########
 #  Each machine should be named in at least one of the role groups below.
-#  Every machine should declare a "desktop_type" variable to indicate
-#  which X desktop environment should be used.  Options are:
-#      kde (the default)
-#      mate
+#  At present the only desktop installed is KDE.  In the past (and perhaps
+#  again in the future) I supported other desktops but KDE is my DE of choice
+#  these days.
 ##########
 
 ### Machine role
-
-[media_workstations]
+[laptop_workstations]
 
 [desktop_workstations]
-localhost ansible_connection=local desktop_type=kde
-
-[dev_workstations]
+localhost ansible_connection=local
 
 [gaming_workstations]
 
 [media_servers]
-
-[vm_servers]
-
-[router]

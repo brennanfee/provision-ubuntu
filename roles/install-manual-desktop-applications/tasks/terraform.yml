@@ -1,0 +1,33 @@
+---
+- name: Create Terraform directory
+  become: true
+  file:
+    path: /usr/local/src/terraform-{{ terraform_version }}/
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install Terraform
+  become: true
+  unarchive:
+    src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+    dest: /usr/local/src/terraform-{{ terraform_version }}/
+    creates: /usr/local/src/terraform-{{ terraform_version }}/terraform
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0755
+  register: terraform_downloaded
+  when: ansible_virtualization_role != "guest"
+
+- name: Link Terraform
+  become: true
+  file:
+    src: /usr/local/src/terraform-{{ terraform_version }}/terraform
+    path: /usr/local/bin/terraform
+    state: link
+    owner: root
+    group: root
+    mode: 0755
+  when: ansible_virtualization_role != "guest" and terraform_download.changed == True

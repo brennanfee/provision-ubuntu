@@ -9,7 +9,7 @@
   roles:
     - { role: upgrade, apt_upgrade_level: full }
     - base-packages
-    - python-install
+    - allow-sudo
     - ansible-user
     - ssh
 # NOTE: Most of these roles can (and should) be reused in a more complete

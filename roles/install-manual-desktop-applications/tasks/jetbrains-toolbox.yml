@@ -1,0 +1,10 @@
+- name: Download Jetbrains Toolbox Installer
+  become: true
+  unarchive:
+    src: "https://download.jetbrains.com/toolbox/jetbrains-toolbox-{{ jetbrains_toolbox_version }}.tar.gz"
+    dest: /usr/local/src/
+    creates: /usr/local/src/jetbrains-toolbox-{{ jetbrains_toolbox_version }}/jetbrains-toolbox
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0755

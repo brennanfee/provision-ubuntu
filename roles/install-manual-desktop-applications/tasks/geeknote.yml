@@ -1,0 +1,23 @@
+---
+- name: Create geeknote folder
+  become: true
+  file:
+    path: /usr/local/src/geeknote
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Checkout Geeknote git repo
+  become: true
+  git:
+    repo: "https://github.com/VitaliyRodnenko/geeknote.git"
+    dest: /usr/local/src/geeknote
+    depth: 1
+
+- name: Run the Geeknote install
+  become: true
+  command: /usr/bin/python2 /usr/local/src/geeknote/setup.py install
+  args:
+    chdir: /usr/local/src/geeknote/
+    creates: /usr/local/bin/geeknote

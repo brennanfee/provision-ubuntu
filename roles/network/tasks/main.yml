@@ -1,0 +1,54 @@
+---
+- name: Install network manager packages
+  become: true
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - resolvconf
+    - network-manager
+    - network-manager-openvpn
+    - ufw
+    - avahi-autoipd
+    - avahi-daemon
+    - netcat-openbsd
+
+- name: Copy network configuration
+  become: true
+  template:
+    src: etc-network--interfaces.j2
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: Determine if we have host specific configurations
+  local_action: stat path="{{ playbook_dir }}/roles/network/templates/etc-network--interfaces-{{ ansible_hostname }}.j2"
+  register: host_interface_config
+
+- name: Copy static network configurations
+  become: true
+  template:
+    src: etc-network--interfaces-{{ ansible_hostname }}.j2
+    dest: /etc/network/interfaces.d/static-interfaces
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  when: host_interface_config.stat.exists
+
+- name: Enable Ufw
+  become: true
+  ufw:
+    state: enabled
+    policy: deny
+    logging: low
+  when: "'router' not in group_names"
+
+- name: Ufw rule to allow ssh
+  become: true
+  ufw:
+    rule: allow
+    name: OpenSSH
+  when: "'router' not in group_names"

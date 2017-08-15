@@ -1,0 +1,40 @@
+---
+- name: Install core audio packages
+  become: true
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - alsa-utils
+    - libasound2-plugins
+    - pulseaudio
+    - pulseaudio-module-bluetooth
+    - pulseaudio-utils
+    - gstreamer1.0-pulseaudio
+  register: audio_packages_install
+
+- name: Copy Pulseaudio configuration
+  become: true
+  template:
+    src: etc-pulse--daemon.conf.j2
+    dest: /etc/pulse/daemon.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: Add users to the pulse group
+  become: true
+  user:
+    name: '{{ item.name }}'
+    groups: 'pulse'
+    append: yes
+  with_items: '{{ users }}'
+
+- name: Add users to the pulse-access group
+  become: true
+  user:
+    name: '{{ item.name }}'
+    groups: 'pulse-access'
+    append: yes
+  with_items: '{{ users }}'

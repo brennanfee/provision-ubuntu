@@ -1,12 +1,7 @@
 {
-    "variables": {
-        "ubuntu_version": "16.04",
-        "ubuntu_version_full": "16.04.2",
-        "checksum": "f529548fa7468f2d8413b8427d8e383b830df5f6"
-    },
-
     "builders": [
     {
+        "name": "ubuntu-{{user `ubuntu_version`}}-server",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "iso_url": "iso/{{user `ubuntu_version`}}/ubuntu-{{user `ubuntu_version_full`}}-server-amd64.iso",
@@ -61,7 +56,7 @@
             "initrd=/install/initrd.gz ",
             "auto-install/enable=true ",
             "debconf/priority=critical ",
-            "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/ubuntu-{{user `ubuntu_version`}}/preseed.cfg ",
+            "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/{{user `ubuntu_version`}}/ubuntu-server/preseed.cfg ",
             "<enter>"
         ]
     }],
@@ -85,8 +80,7 @@
         "pause_before": "30s",
         "playbook_file": "../main.yml",
         "user": "vagrant",
-        "groups": [ "media_servers", "desktop_workstations" ],
-        "extra_arguments": [ "--extra-vars", "desktop_type=mate"]
+        "groups": [ "media_servers" ]
     },
     {
         "type": "shell",
