@@ -6,7 +6,7 @@
     - base-packages
     - allow-sudo
     - ansible-user
-    - ssh  # Might remove this if it causes issues with edits and successive runs
+    - ssh # Might remove this if it causes issues with edits and successive runs
 
 - name: Common setup for all machines
   hosts: all
@@ -28,7 +28,10 @@
   roles:
     - desktop-kde
     - desktop-addon-i3
-    - { role: virtualbox-guest, when: ansible_virtualization_type == "virtualbox" and ansible_virtualization_role == "guest" }
+    - {
+        role: virtualbox-guest,
+        when: ansible_virtualization_type == "virtualbox" and ansible_virtualization_role == "guest",
+      }
 
 - name: Install Fonts
   hosts: all
@@ -52,12 +55,12 @@
   vars:
     package_set: "Desktop Appliations"
   vars_files:
-# Albert disabled for now.
-#    - vars/desktop-applications/albert.yml
+    # Albert disabled for now.
+    #    - vars/desktop-applications/albert.yml
     - vars/desktop-applications/base.yml
     - vars/desktop-applications/dropbox.yml
     - vars/desktop-applications/flatpak.yml
-    - vars/desktop-applications/flux.yml
+    #    - vars/desktop-applications/flux.yml
     - vars/desktop-applications/infinality.yml
     - vars/desktop-applications/nixnote2.yml
     - vars/desktop-applications/simple-screen-recorder.yml
@@ -65,8 +68,8 @@
     - vars/desktop-applications/spotify.yml
     - vars/desktop-applications/y-ppa-manager.yml
     - vars/desktop-applications/youtube-dl-gui.yml
-# Hipchat disabled for now, was only using at Expedia
-#    - vars/desktop-applications-hipchat.yml
+  # Hipchat disabled for now, was only using at Expedia
+  #    - vars/desktop-applications-hipchat.yml
   roles:
     - install-applications
     - install-manual-desktop-applications
@@ -78,7 +81,10 @@
   vars_files:
     - vars/vm-applications.yml
   roles:
-    - { role: install-applications, when: ansible_virtualization_role != "guest" }
+    - {
+        role: install-applications,
+        when: ansible_virtualization_role != "guest",
+      }
 
 - name: Gaming Applications
   hosts: gaming_workstation
